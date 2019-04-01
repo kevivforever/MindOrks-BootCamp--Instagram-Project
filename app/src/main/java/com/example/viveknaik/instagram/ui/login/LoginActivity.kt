@@ -11,6 +11,7 @@ import com.example.viveknaik.instagram.R
 import com.example.viveknaik.instagram.databinding.ActivityLoginBinding
 import com.example.viveknaik.instagram.di.component.ActivityModule
 import com.example.viveknaik.instagram.di.component.DaggerActivityComponent
+import com.example.viveknaik.instagram.ui.signup.SignUpActivity
 import com.example.viveknaik.instagram.utils.display.Toaster
 import javax.inject.Inject
 
@@ -50,6 +51,13 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel.messageStringId.observe(this, Observer {
             it.data?.run { showMessage(this) }
+        })
+
+        viewModel.SigningUp.observe(this, Observer {
+            it.getIfNotHandled()?.run {
+                startActivity(Intent(applicationContext, SignUpActivity::class.java))
+                finish()
+            }
         })
 
 //        viewModel.dummyNavigation.observe(this, Observer<Event<Bundle>> {

@@ -29,6 +29,7 @@ class LoginViewModel(
     val emailField: MutableLiveData<String> = MutableLiveData()
     val passwordField: MutableLiveData<String> = MutableLiveData()
     val loggingIn: MutableLiveData<Boolean> = MutableLiveData()
+    val SigningUp: MutableLiveData<Event<Bundle>> = MutableLiveData()
 
     val emailValidation: LiveData<Resource<Int>> =
         transformValidation(Validation.Field.EMAIL)
@@ -71,6 +72,10 @@ class LoginViewModel(
                 )
             }
         }
+    }
+
+    fun onSigningUp () {
+        SigningUp.postValue(Event(Bundle()))
     }
 
     private fun checkInternetConnectionWithMessage(): Boolean =
