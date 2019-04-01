@@ -23,6 +23,12 @@ class NetworkHelper constructor(private val context: Context) {
         return activeNetwork?.isConnected ?: false
     }
 
+    /**
+     * check the error type & return NetworkError object
+     * if the error is of type ConnectException & HttpException return NetworkError
+     * if the error status is of userException then create networkError object from statuscode, status & message from api body
+     */
+
     fun castToNetworkError(throwable: Throwable): NetworkError {
         val defaultNetworkError = NetworkError()
         try {

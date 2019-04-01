@@ -44,6 +44,13 @@ class LoginViewModel(
                 ?: Resource.unknown()
         }
 
+    /**
+     * Get email and password field value
+     * validate email & password field using validateLoginFiels & save in validations field
+     * check if validations is not empty, email & password are not null
+     * check if all the validations have success status
+     * check if internet connection is available
+     */
     fun onLogin() {
         val email = emailField.value
         val password = passwordField.value
@@ -86,6 +93,9 @@ class LoginViewModel(
             false
         }
 
+    /**
+     * set the error message using NetworkError class
+     */
     private fun handleNetworkError(err: Throwable?) =
         err?.let {
             networkHelper.castToNetworkError(it).run {

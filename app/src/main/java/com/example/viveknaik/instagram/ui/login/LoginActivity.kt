@@ -70,7 +70,13 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
+    /**
+     * get message string from res id
+     */
     private fun showMessage(@StringRes resId: Int) = showMessage(getString(resId))
 
+    /**
+     * show message
+     */
     private fun showMessage(message: String) =  Toaster.show(application, message)
 }
