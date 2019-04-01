@@ -1,7 +1,13 @@
 package com.example.viveknaik.instagram.di.component
 
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.viveknaik.instagram.data.repository.DummyRepository
+import com.example.viveknaik.instagram.ui.dummies.DummiesAdapter
+import com.example.viveknaik.instagram.ui.dummies.DummiesViewModel
+import com.example.viveknaik.instagram.utils.ViewModelProviderFactory
+import com.example.viveknaik.instagram.utils.network.NetworkHelper
 import com.example.viveknaik.instagram.utils.rx.RxSchedulerProvider
 import com.example.viveknaik.instagram.utils.rx.SchedulerProvider
 import dagger.Module
@@ -23,19 +29,19 @@ class FragmentModule(private val fragment: Fragment) {
     @Provides
     fun provideLinearLayoutManager(): LinearLayoutManager = LinearLayoutManager(fragment.context)
 
-//    @Provides
-//    fun provideDummiesViewModel(
-//        schedulerProvider: SchedulerProvider,
-//        compositeDisposable: CompositeDisposable,
-//        networkHelper: NetworkHelper,
-//        dummyRepository: DummyRepository
-//    ): DummiesViewModel =
-//        ViewModelProviders.of(fragment,
-//            ViewModelProviderFactory(DummiesViewModel::class) {
-//                DummiesViewModel(schedulerProvider, compositeDisposable, networkHelper, dummyRepository)
-//            }
-//        ).get(DummiesViewModel::class.java)
-//
-//    @Provides
-//    fun provideDummiesAdapter() = DummiesAdapter(ArrayList())
+    @Provides
+    fun provideDummiesViewModel(
+        schedulerProvider: SchedulerProvider,
+        compositeDisposable: CompositeDisposable,
+        networkHelper: NetworkHelper,
+        dummyRepository: DummyRepository
+    ): DummiesViewModel =
+        ViewModelProviders.of(fragment,
+            ViewModelProviderFactory(DummiesViewModel::class) {
+                DummiesViewModel(schedulerProvider, compositeDisposable, networkHelper, dummyRepository)
+            }
+        ).get(DummiesViewModel::class.java)
+
+    @Provides
+    fun provideDummiesAdapter() = DummiesAdapter(ArrayList())
 }

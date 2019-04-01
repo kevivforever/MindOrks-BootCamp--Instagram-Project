@@ -61,7 +61,7 @@ class LoginViewModel(
                         .subscribe(
                             {
                                 userRepository.saveCurrentUser(it)
-                                loggingIn.postValue(true)
+                                loggingIn.postValue(false)
                                 dummyNavigation.postValue(Event(Bundle()))
                             },
                             {

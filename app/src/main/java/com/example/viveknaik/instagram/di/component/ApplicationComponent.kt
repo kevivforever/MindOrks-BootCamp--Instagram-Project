@@ -8,6 +8,7 @@ import com.example.viveknaik.instagram.data.remote.NetworkService
 import com.example.viveknaik.instagram.data.repository.UserRepository
 import com.example.viveknaik.instagram.di.ApplicationContext
 import com.example.viveknaik.instagram.utils.network.NetworkHelper
+import com.mindorks.bootcamp.instagram.data.local.db.DatabaseService
 import dagger.Component
 import javax.inject.Singleton
 
@@ -32,7 +33,7 @@ interface ApplicationComponent {
      */
     fun getNetworkService(): NetworkService
 
-//    fun getDatabaseService(): DatabaseService
+    fun getDatabaseService(): DatabaseService
 
     fun getSharedPreferences(): SharedPreferences
 

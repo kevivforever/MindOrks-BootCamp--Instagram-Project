@@ -11,7 +11,9 @@ import com.example.viveknaik.instagram.R
 import com.example.viveknaik.instagram.databinding.ActivityLoginBinding
 import com.example.viveknaik.instagram.di.component.ActivityModule
 import com.example.viveknaik.instagram.di.component.DaggerActivityComponent
+import com.example.viveknaik.instagram.ui.dummy.DummyActivity
 import com.example.viveknaik.instagram.ui.signup.SignUpActivity
+import com.example.viveknaik.instagram.utils.common.Event
 import com.example.viveknaik.instagram.utils.display.Toaster
 import javax.inject.Inject
 
@@ -60,12 +62,12 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-//        viewModel.dummyNavigation.observe(this, Observer<Event<Bundle>> {
-//            it.getIfNotHandled()?.run {
-//                startActivity(Intent(applicationContext, DummyActivity::class.java))
-//                finish()
-//            }
-//        })
+        viewModel.dummyNavigation.observe(this, Observer<Event<Bundle>> {
+            it.getIfNotHandled()?.run {
+                startActivity(Intent(applicationContext, DummyActivity::class.java))
+                finish()
+            }
+        })
     }
 
     private fun showMessage(@StringRes resId: Int) = showMessage(getString(resId))

@@ -1,6 +1,7 @@
 package com.example.viveknaik.instagram.di.component
 
 import com.example.viveknaik.instagram.di.FragmentScope
+import com.example.viveknaik.instagram.ui.dummies.DummiesFragment
 import dagger.Component
 
 @FragmentScope
@@ -10,5 +11,5 @@ import dagger.Component
 )
 interface FragmentComponent {
 
-//    fun inject(fragment: DummiesFragment)
+    fun inject(fragment: DummiesFragment)
 }

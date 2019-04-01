@@ -3,6 +3,7 @@ package com.example.viveknaik.instagram.di.component
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.room.Room
 import com.example.viveknaik.instagram.BootcampApplication
 import com.example.viveknaik.instagram.BuildConfig
 import com.example.viveknaik.instagram.data.remote.NetworkService
@@ -11,6 +12,7 @@ import com.example.viveknaik.instagram.di.ApplicationContext
 import com.example.viveknaik.instagram.utils.network.NetworkHelper
 import com.example.viveknaik.instagram.utils.rx.RxSchedulerProvider
 import com.example.viveknaik.instagram.utils.rx.SchedulerProvider
+import com.mindorks.bootcamp.instagram.data.local.db.DatabaseService
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
@@ -39,13 +41,13 @@ class ApplicationModule(private val application: BootcampApplication) {
     fun provideSharedPreferences(): SharedPreferences =
         application.getSharedPreferences("bootcamp-instagram-project-prefs", Context.MODE_PRIVATE)
 
-//    @Provides
-//    @Singleton
-//    fun provideDatabaseService(): DatabaseService =
-//        Room.databaseBuilder(
-//            application, DatabaseService::class.java,
-//            "bootcamp-instagram-project-db"
-//        ).build()
+    @Provides
+    @Singleton
+    fun provideDatabaseService(): DatabaseService =
+        Room.databaseBuilder(
+            application, DatabaseService::class.java,
+            "bootcamp-instagram-project-db"
+        ).build()
 
     @Provides
     @Singleton

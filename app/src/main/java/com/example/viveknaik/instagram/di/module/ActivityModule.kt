@@ -3,7 +3,9 @@ package com.example.viveknaik.instagram.di.component
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.viveknaik.instagram.data.repository.DummyRepository
 import com.example.viveknaik.instagram.data.repository.UserRepository
+import com.example.viveknaik.instagram.ui.dummy.DummyViewModel
 import com.example.viveknaik.instagram.ui.login.LoginViewModel
 import com.example.viveknaik.instagram.ui.splash.SplashViewModel
 import com.example.viveknaik.instagram.utils.ViewModelProviderFactory
@@ -45,16 +47,16 @@ class ActivityModule(private val activity: AppCompatActivity) {
             //this lambda creates and return SplashViewModel
         }).get(SplashViewModel::class.java)
 
-//    @Provides
-//    fun provideDummyViewModel(
-//        schedulerProvider: SchedulerProvider,
-//        compositeDisposable: CompositeDisposable,
-//        networkHelper: NetworkHelper,
-//        dummyRepository: DummyRepository
-//    ): DummyViewModel = ViewModelProviders.of(
-//        activity, ViewModelProviderFactory(DummyViewModel::class) {
-//            DummyViewModel(schedulerProvider, compositeDisposable, networkHelper, dummyRepository)
-//        }).get(DummyViewModel::class.java)
+    @Provides
+    fun provideDummyViewModel(
+        schedulerProvider: SchedulerProvider,
+        compositeDisposable: CompositeDisposable,
+        networkHelper: NetworkHelper,
+        dummyRepository: DummyRepository
+    ): DummyViewModel = ViewModelProviders.of(
+        activity, ViewModelProviderFactory(DummyViewModel::class) {
+            DummyViewModel(schedulerProvider, compositeDisposable, networkHelper, dummyRepository)
+        }).get(DummyViewModel::class.java)
 
     @Provides
     fun provideLoginViewModel(
