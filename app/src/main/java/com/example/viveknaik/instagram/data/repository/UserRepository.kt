@@ -4,6 +4,7 @@ import com.example.viveknaik.instagram.data.local.prefs.UserPreferences
 import com.example.viveknaik.instagram.data.model.User
 import com.example.viveknaik.instagram.data.remote.NetworkService
 import com.example.viveknaik.instagram.data.remote.request.LoginRequest
+import com.example.viveknaik.instagram.data.remote.request.SignUpRequest
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -50,4 +51,15 @@ class UserRepository @Inject constructor(
                     it.accessToken
                 )
             }
+
+    fun doUserSignUp(email: String, password: String, name: String): Single<User> =
+            networkService.doSignUpCall(SignUpRequest(name, email, password))
+                .map {
+                    User(
+                        it.userId,
+                        it.userName,
+                        it.userEmail,
+                        it.accessToken
+                    )
+                }
 }

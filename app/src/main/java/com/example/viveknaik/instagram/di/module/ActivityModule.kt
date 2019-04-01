@@ -7,6 +7,7 @@ import com.example.viveknaik.instagram.data.repository.DummyRepository
 import com.example.viveknaik.instagram.data.repository.UserRepository
 import com.example.viveknaik.instagram.ui.dummy.DummyViewModel
 import com.example.viveknaik.instagram.ui.login.LoginViewModel
+import com.example.viveknaik.instagram.ui.signup.SignUpViewModel
 import com.example.viveknaik.instagram.ui.splash.SplashViewModel
 import com.example.viveknaik.instagram.utils.ViewModelProviderFactory
 import com.example.viveknaik.instagram.utils.network.NetworkHelper
@@ -68,4 +69,15 @@ class ActivityModule(private val activity: AppCompatActivity) {
         activity, ViewModelProviderFactory(LoginViewModel::class) {
             LoginViewModel(schedulerProvider, compositeDisposable, networkHelper, userRepository)
         }).get(LoginViewModel::class.java)
+
+    @Provides
+    fun provideSignUpViewModel(
+        schedulerProvider: SchedulerProvider,
+        compositeDisposable: CompositeDisposable,
+        networkHelper: NetworkHelper,
+        userRepository: UserRepository
+    ): SignUpViewModel = ViewModelProviders.of(
+        activity, ViewModelProviderFactory(SignUpViewModel::class) {
+            SignUpViewModel(schedulerProvider, compositeDisposable, networkHelper, userRepository)
+        }).get(SignUpViewModel::class.java)
 }

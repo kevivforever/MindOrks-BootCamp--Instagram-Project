@@ -10,13 +10,17 @@
     <string name="network_login_again">Please log in again</string>
 
     <!--login-->
+    <string name="name_field_hint">Enter your name</string>
     <string name="email_field_hint">Enter your email</string>
     <string name="password_field_hint">Enter your password</string>
     <string name="email_field_empty">Email can\'t be empty</string>
+    <string name="name_field_empty">Name can\'t be empty</string>
     <string name="password_field_empty">Password can\'t be empty</string>
     <string name="email_field_invalid">Not a valid email</string>
     <string name="password_field_small_length">Password less than 6 digits</string>
     <string name="login_button_text">Login</string>
     <string name="login_button_signup">Sign Up with Email</string>
+    <string name="signup_button_login">Login with Email</string>
+    <string name="signup_button_text">Sign Up</string>
     <string name="or">OR</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.viveknaik.instagram.data.remote
 
 import com.example.viveknaik.instagram.data.remote.request.DummyRequest
 import com.example.viveknaik.instagram.data.remote.request.LoginRequest
+import com.example.viveknaik.instagram.data.remote.request.SignUpRequest
 import com.example.viveknaik.instagram.data.remote.response.DummyResponse
 import com.example.viveknaik.instagram.data.remote.response.LoginResponse
 import io.reactivex.Single
@@ -39,6 +40,13 @@ interface NetworkService {
     @POST(Endpoints.LOGIN)
     fun doLoginCall(
         @Body request: LoginRequest,
+        @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY
+    ): Single<LoginResponse>
+
+
+    @POST(Endpoints.SIGNUP)
+    fun doSignUpCall(
+        @Body request: SignUpRequest,
         @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY
     ): Single<LoginResponse>
 }
